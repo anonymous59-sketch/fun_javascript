@@ -20,8 +20,9 @@ result = num1 > num2 && num1 == str1; // AND 연산자
 result = !(num1 > num2 && num1 == str1); // NOT(부정) 연산자.
 result = !result;
 result = !result;
-
+/* result = false == 'false'
+result = false != 'false' */
 console.log(result);
 // 아스키 코드의 번호를 확인해서 문자의 값을 나타냄.
-/* console.log('家'.charCodeAt());
-console.log('A'.charCodeAt()); */
+console.log('false'.charCodeAt());
+// console.log('A'.charCodeAt());

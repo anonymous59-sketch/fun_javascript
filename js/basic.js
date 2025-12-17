@@ -4,7 +4,7 @@ let myName = "박상원";
 myName = '홍길동';
 // 혈액형 (AB, O, B, A)
 let bloodType = ['AB', 'B', 'A', 'O'];
-// 키 선언 => 키 저장
+// 키 선언 => 키와 값 저장
 let myHeight = 100;
 //성인, 미성년 구분
 let isAdult = true; // false의 값을 가질 수 있음

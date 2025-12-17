@@ -5,7 +5,7 @@
 
 // x의 값이 홀수이면서 5보다 크거나 같은지 => "조건을 만족합니다" / "조건을 만족안합니다."
 
-let x = Math.floor(Math.random() * 10) + 1; // 0 <= x < 10의 범위를 가짐
+let x = Math.floor(Math.random() * 10) + 1; // 0 < x <= 10의 범위를 가짐
 console.log(x);
 if (x % 2 === 0) {
   console.log(`짝수입니다.`);
