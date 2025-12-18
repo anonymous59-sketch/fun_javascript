@@ -1,4 +1,4 @@
 ###
 테스트.txt
 git토큰.txt
-.gitignore
+!.gitignore
