@@ -7,8 +7,8 @@
 // git add .
 // git commit -m "1217 숙제완료"
 // git push -u origin main
-let a = prompt(`이름을 입력하시오`);
-let b = prompt(`연락처를 입력하시오`);
-let c = prompt(`주소 정보를 입력하시오`);
+let name = prompt(`이름을 입력하시오`);
+let phone = prompt(`연락처를 입력하시오`);
+let address = prompt(`주소 정보를 입력하시오`);
 
-console.log(`\"이름은 ${a}, 전화번호는 ${b}, 주소는 ${c}\"`);
+console.log(`\"이름은 ${name}, 전화번호는 ${phone}, 주소는 ${address}\"`);
