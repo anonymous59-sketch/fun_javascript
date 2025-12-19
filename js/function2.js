@@ -10,6 +10,9 @@ function sum(a, b) {
   console.log(`지역 : ${result}`);
 }
 sum(1, 2);
+
+
+
 console.log(`전역 : ${result1}`);
 
 // 코드

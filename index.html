@@ -1,18 +1,92 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>index.html</title>
-</head>
-<body>
-  <h3>자바스크립트 연습</h3>
-  <ul>
-    내가 좋아하는 음식. (박상원)
-    <li>치킨</li>
-    <li>피자</li>
-    <li>족발</li>
-  </ul>
-  <script src="todo/todo_1218.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>index.html</title>
+  </head>
+  <body>
+    <h3>자바스크립트 연습</h3>
+    <ul id="first">
+      내가 좋아하는 음식. (박상원)
+      <li>치킨</li>
+      <li>피자</li>
+      <li>족발</li>
+    </ul>
+
+  <!--   <button>이벤트</button>
+    <table border="2px">
+      <thead>
+        <tr>
+          <th>아이디</th>
+          <th>이름</th>
+          <th>포인트</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="2">합계</td>
+          <td></td>
+        </tr>
+      </tfoot>
+    </table> -->
+    
+<!--let table = `
+    <table border="2">
+      `; table += `
+      <thead>
+        <tr>
+          <th>학생번호</th>
+          <th>학생이름</th>
+          <th>전화번호</th>
+          <th>점수</th>
+        </tr>
+      </thead>
+      <tbody>
+        `; for (let stu of studentAry) { table += `
+        <tr>
+          <td>${stu.stdNo}</td>
+          <td>${stu.stdName}</td>
+          <td>${stu.phone}</td>
+          <td>${stu.score}</td>
+        </tr>
+        `; } table += `
+      </tbody>
+    </table>
+    `; document.writeln(table); -->
+
+    <!-- <table border="2">
+    <thead>
+      <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table> -->
+
+    <!-- <table border="2">
+    <thead><tr><th></th><th></th><th></th><th></th></tr></thead><tbody>
+
+      <tr><td>반복내용</td><td>반복내용</td><td>반복내용</td><td>반복내용</td></tr>
+    
+    </tbody></table> -->
+    <script src="js/exe3.js"></script>
+  </body>
 </html>
