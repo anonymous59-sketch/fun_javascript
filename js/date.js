@@ -94,7 +94,7 @@ function printCalendar1(yyyy, mm) {
     const spaces = today.getDay(); // 달력 앞의 날짜가 없는 공란
     today.setMonth(mm);
     today.setDate(0);
-    const lastDate = today.getDate(); // 달력의 마지막날은 31일
+    const lastDate = today.getDate(); // 달력의 마지막날 세팅을 위해 다음달의 setDate를 0으로 설정
     // 배열을 이용해보기
     const days = [`Sun`, `Mon`, `Tue`, `Wed`, `Thu`, `Fri`, `Sat`];
 
