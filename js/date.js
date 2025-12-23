@@ -80,13 +80,14 @@ function printCalendar(a, b) {
 
   document.writeln(htmlStr);
 }
-printCalendar();
+// printCalendar();
 
 function printCalendar1(yyyy, mm) {
   // 1일이 화요일, 31일이 마지막 날.
-  if (mm > 12) {
-    alert(`월은 12월까지 입력해 주세요`)
-  } else {
+  // if (mm > 12) {
+  //   alert(`월은 12월까지 입력해 주세요`)
+  // }
+  //  else {
     const today = new Date();
     today.setFullYear(yyyy);
     today.setMonth(mm - 1);
@@ -107,21 +108,42 @@ function printCalendar1(yyyy, mm) {
     htmlStr += `</tr></thead><tbody><tr>`;
     // 공란 그리기
     for(let s = 1; s <= spaces; s++) {
-      htmlStr += `<td></td>`;
+      htmlStr += `<td> </td>`;
     }
 
     for (let d = 1; d <= lastDate; d++) {
       htmlStr += `<td>${d}</td>`;
       if((d + spaces) % 7 == 0) {
-        htmlStr += '</dr><tr>';
+        htmlStr += '</tr><tr>';
       }
     }
 
     htmlStr += `</tr></tbody></table>`;
-
-    document.writeln(htmlStr);
-}
-}
+    document.querySelector(`#calendar`).innerHTML = htmlStr;
+    // id가 calendar인 요소의 innerHTML의 속성에 값을 넣는다.
+  }
+  
+  document.querySelectorAll(`button`).forEach(elem => {
+    let year = Number(document.querySelector(`#yyyy`).value);
+    let month = Number(document.querySelector(`#mm`).value);
+    elem.addEventListener(`click`, e => {
+      if (e.target.innerText == '<<') {
+        year -= 1;
+        printCalendar1(year, month);
+      } else if (e.target.innerText == '<'){
+        month -= 1;
+        printCalendar1(year, month);
+      } else if (e.target.innerText == `>`) {
+        month += 1;
+        printCalendar1(year, month);
+      } else if (e.target.innerText == '>>') {
+        year += 1;
+        printCalendar1(year, month);
+      } else {
+        printCalendar1(year, month);
+      }
+    })
+  })
 let yyyy = Number(prompt(`확인하고 싶은 달력의 년도를 입력해주세요(yyyy형식)`));
 let mm = Number(prompt(`확인하고 싶은 달력의 월을 입력해주세요 (mm형식)`));
 
