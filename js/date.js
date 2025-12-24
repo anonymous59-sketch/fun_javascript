@@ -58,7 +58,7 @@
 //   const days = [`Sun`, `Mon`, `Tue`, `Wed`, `Thu`, `Fri`, `Sat`];
 
 //   let htmlStr = `<table border = '2'><thead><tr>`;
-  
+
 //   for (let day of days) {
 //     htmlStr += `<th>${day}</th>`;
 //   }
@@ -83,83 +83,86 @@
 // printCalendar();
 
 function printCalendar1(yyyy, mm) {
-    const today = new Date();
-    today.setFullYear(yyyy);
-    today.setMonth(mm - 1);
-    today.setDate(1); 
-    const spaces = today.getDay(); // 달력 앞의 날짜가 없는 공란
-    today.setFullYear(yyyy);
-    today.setMonth(mm);
-    today.setDate(0);
-    const lastDate = today.getDate(); // 달력의 마지막날 세팅을 위해 다음달의 setDate를 0으로 설정
-    // 배열을 이용해보기
-    const days = [`Sun`, `Mon`, `Tue`, `Wed`, `Thu`, `Fri`, `Sat`];
-    let htmlStr = `<table border = '2'><h2>${today.getFullYear()}년</h2><thead><caption>${today.getMonth() + 1}월</caption><tr>`;
-    
-    for (let day of days) {
-      htmlStr += `<th>${day}</th>`;
-    }
+  const today = new Date();
+  today.setFullYear(yyyy);
+  today.setMonth(mm - 1);
+  today.setDate(1);
+  const spaces = today.getDay(); // 달력 앞의 날짜가 없는 공란
+  today.setFullYear(yyyy);
+  today.setMonth(mm);
+  today.setDate(0);
+  const lastDate = today.getDate(); // 달력의 마지막날 세팅을 위해 다음달의 setDate를 0으로 설정
+  // 배열을 이용해보기
+  const days = [`Sun`, `Mon`, `Tue`, `Wed`, `Thu`, `Fri`, `Sat`];
+  let htmlStr = `<table border = '2'><h2>${today.getFullYear()}년</h2><thead><caption>${today.getMonth() + 1}월</caption><tr>`;
 
-    htmlStr += `</tr></thead><tbody><tr>`;
-    // 공란 그리기
-    for(let s = 1; s <= spaces; s++) {
-      htmlStr += `<td> </td>`;
-    }
+  for (let day of days) {
+    htmlStr += `<th>${day}</th>`;
+  }
 
-    for (let d = 1; d <= lastDate; d++) {
-      htmlStr += `<td>${d}</td>`;
-      if((d + spaces) % 7 == 0) {
-        htmlStr += '</tr><tr>';
-      }
+  htmlStr += `</tr></thead><tbody><tr>`;
+  // 공란 그리기
+  for (let s = 1; s <= spaces; s++) {
+    htmlStr += `<td> </td>`;
+  }
+
+  for (let d = 1; d <= lastDate; d++) {
+    htmlStr += `<td>${d}</td>`;
+    if ((d + spaces) % 7 == 0) {
+      htmlStr += '</tr><tr>';
     }
-    
-    htmlStr += `</tr></tbody></table>`;
-    document.querySelector(`#calendar`).innerHTML = htmlStr; // id가 calendar인 요소의 innerHTML의 속성에 값을 넣는다.
-    document.querySelector(`#yyyy`).value = today.getFullYear();
-    document.querySelector(`#mm`).value = today.getMonth() + 1;
+  }
+
+  htmlStr += `</tr></tbody></table>`;
+  document.querySelector(`#calendar`).innerHTML = htmlStr; // id가 calendar인 요소의 innerHTML의 속성에 값을 넣는다.
+  document.querySelector(`#yyyy`).value = today.getFullYear();
+  document.querySelector(`#mm`).value = today.getMonth() + 1;
 }
-let year1 = document.querySelector(`#yyyy`).value;
-let month1 = document.querySelector(`#mm`).value;
-// 이전 해로 이동
-document.querySelector(`#prevY`).addEventListener(`click`, () => {
-  year1 = Number(year1) - 1;
-  let year = Number(year1);
-  let month = Number(month1);
-  printCalendar1(year, month);
-})
-// 이전 달로 이동
-document.querySelector(`#prevM`).addEventListener(`click`, () => {
-  month1 = Number(month1) - 1;
-  let year = Number(year1);
-  let month = Number(month1);
-  printCalendar1(year, month);
-})
-// 달력 출력 버튼 (사용자가 임의로 입력했을 때)
-document.querySelector(`#submit`).addEventListener(`click`, () => {
- let year = Number(year1);
- let month = Number(month1);
-  printCalendar1(year, month);
-})
-// 다음 달로 이동
-document.querySelector(`#nextM`).addEventListener(`click`, () => {
-  month1 = Number(month1) + 1;
-  let year = Number(year1);
-  let month = Number(month1);
-  printCalendar1(year, month);
-})
-// 다음 해로 이동
-document.querySelector(`#nextY`).addEventListener(`click`, () => {
-  year1 = Number(year1) + 1;
-  let year = Number(year1);
-  let month = Number(month1);
-  printCalendar1(year, month);
-})
-
 let yyyy = Number(prompt(`확인하고 싶은 달력의 년도를 입력해주세요(yyyy형식)`));
 let mm = Number(prompt(`확인하고 싶은 달력의 월을 입력해주세요 (mm형식)`));
 
-printCalendar1(yyyy, mm);
+document.querySelector(`#yyyy`).value = `yyyy`;
+document.querySelector(`#mm`).value = `mm`;
 
+// 이전 해로 이동
+document.querySelector(`#prevY`).addEventListener(`click`, () => {
+  document.querySelector(`#yyyy`).value = Number(document.querySelector(`#yyyy`).value) - 1;
+  let year1 = Number(document.querySelector(`#yyyy`).value);
+  let month1 = Number(document.querySelector(`#mm`).value);
+  printCalendar1(year1, month1);
+})
+// 이전 달로 이동
+document.querySelector(`#prevM`).addEventListener(`click`, () => {
+  document.querySelector(`#mm`).value = Number(document.querySelector(`#mm`).value) - 1;
+  let year1 = Number(document.querySelector(`#yyyy`).value);
+  let month1 = Number(document.querySelector(`#mm`).value);
+  printCalendar1(year1, month1);
+})
+// 달력 출력 버튼 (사용자가 임의로 입력했을 때)
+document.querySelector(`#submit`).addEventListener(`click`, () => {
+  // document.querySelector(`#calendar`).style.display = `block`;
+  let year1 = Number(document.querySelector(`#yyyy`).value);
+  let month1 = Number(document.querySelector(`#mm`).value);
+  printCalendar1(year1, month1);
+
+})
+// 다음 달로 이동
+document.querySelector(`#nextM`).addEventListener(`click`, () => {
+  document.querySelector(`#mm`).value = Number(document.querySelector(`#mm`).value) + 1;
+  let year1 = Number(document.querySelector(`#yyyy`).value);
+  let month1 = Number(document.querySelector(`#mm`).value);
+  printCalendar1(year1, month1);
+})
+// 다음 해로 이동
+document.querySelector(`#nextY`).addEventListener(`click`, () => {
+  document.querySelector(`#yyyy`).value = Number(document.querySelector(`#yyyy`).value) + 1;
+  let year1 = Number(document.querySelector(`#yyyy`).value);
+  let month1 = Number(document.querySelector(`#mm`).value);
+  printCalendar1(year1, month1);
+})
+
+// 사용자에게 입력받은 날짜로 달력표시 (처음 1회용)
+printCalendar1(yyyy, mm);
 
 // let year = 2025; // 입력받는 값
 // let month = 2; // 입력받는 값

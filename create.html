@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Web Programming</title>
+	<link rel="stylesheet" href="css/subject.css">
+  <style>
+    .cancel {
+      text-decoration: line-through;
+      color: rgba(0,0,0,0.5);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Web Programming (박상원)</h1>
+    <p>공부할 주제를 기록해 보세요</p>
+    <form action="" name="addForm"> <!-- action이 submit을 눌렀을 때 데이터를 전송 하는 곳  -->
+      <label for="subject" class="hidden">주제</label>
+      <input type="text" id="subject" autofocus value="hello">
+      <button type="submit">추가</button>
+    </form>
+    <hr>  
+    <ul id="itemList"></ul>
+    <!-- <li class="cancel">HTML<button>취소</button></li> -->
+  </div>
+  <script src="js/creat.js"></script>
+</body>
+</html>
