@@ -1,6 +1,6 @@
 // student.js
 
-// console.log(document.querySelectorAll('.table')); // 자식선택자 잘 안되는거 뭐가문제일까?
+console.log(document.querySelectorAll('.table > tbody > tr > td')); // 자식선택자 잘 안되는거 뭐가문제일까? >> 잘되네?
 
 let students = [{
     studNo: '26-001',
@@ -64,37 +64,47 @@ document.querySelector('button[class~="btn-success"]').addEventListener('click',
     return;
   }
 
-  // 삭제버튼을 누르면 배열에서 삭제하고 목록 최신화
   // 값을 집어넣고 배열에 하나씩 추가하기
   students.push({studNo, studName, stuScore});
   makeList();
   
-  document.querySelectorAll('.table input').forEach(elem => elem.value = '')
+  // 등록 후 초기화 및 포커스
+  document.querySelectorAll('.table input').forEach(elem => elem.value = '');
   document.querySelector('#stuNo').focus();
-}) // 등록버튼 end of submit
+})
+// 등록버튼 end of submit
 
 document.querySelector('button[class~="btn-secondary"]').addEventListener('click', () => {
   document.querySelectorAll('.table input').forEach(elem => elem.value = '')
   document.querySelector('#stuNo').focus();
-  // 취소버튼 end of cancel
 }) 
+// 취소버튼 end of cancel
+
 
 ////////////////  함수  //////////////////
 // 학생정보 -> tr 생성해주는 함수
 function makeTr(student = {}) {
   // tr을 생성
   let tr = document.createElement('tr');
+  let td = document.createElement('td');
+  let check = document.createElement('input');
+  check.setAttribute('type', 'checkbox');
+  check.name = 'delCheck';
+  check.setAttribute('data-sno', student.studNo);
+  td.appendChild(check);
+  tr.appendChild(td);
   for (let prop in student) {
     // td을 생성
-    let td = document.createElement('td');
+    td = document.createElement('td');
     td.innerText = student[prop];
     tr.appendChild(td);
   }
-  let td = document.createElement('td');
   let button = document.createElement('button');
   // 삭제버튼의 이벤트
-  // button.addEventListener('click', deleteRowFnc);
+  // 삭제버튼을 누르면 배열에서 삭제하고 목록 최신화
+  button.addEventListener('click', deleteRowFnc);
   button.setAttribute('data-sno', student.studNo); // <button data-sno='25-001'>.삭제<button>
+  td = document.createElement('td');  
   button.className = 'btn btn-danger';
   button.innerText = '삭제';
   td.appendChild(button);
@@ -117,6 +127,21 @@ function makeList() {
 function deleteRowFnc(){
   // console.log(this.dataset.sno); // data-sno 라고 값을 넣으면 dataset.sno 라는 식으로 값을 불러올 수 있다.
   let delNo = this.dataset.sno;
-  students = students.filter(elem => elem.studNo != delNo);
+  let delChk = document.querySelectorAll("input[name='delCheck']:checked");
+  let delChk1 = [];
+  for (let a of delChk) {
+    delChk1.push(a.dataset.sno);
+  }
+  students = students.filter(elem => {
+    if (elem.studNo == delNo) {
+      return false;
+    }
+    for (let del of delChk1) {
+      if (elem.studNo == del) {
+        return false;
+      }
+    }
+    return true;
+  });
   makeList();
 }
