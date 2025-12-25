@@ -59,7 +59,7 @@ document.querySelector('button[class~="btn-success"]').addEventListener('click',
   // return false;) //위의 문장이랑 같은 말
   if (exists) {
     alert('동일한 학생번호 존재합니다.');
-    document.querySelectorAll('.table input').forEach(elem => elem.value = '')
+    document.querySelectorAll('.table input').forEach(elem => elem.value = '');
     document.querySelector('#stuNo').focus();
     return;
   }
