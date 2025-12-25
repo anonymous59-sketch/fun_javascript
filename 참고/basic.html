@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>index.html</title>
+    <style>
+      h3 {
+        color: red;
+      }
+      input[type="number"] {
+        width: 100px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h3>자바스크립트 연습</h3>
+
+    <ul id="second">
+      내가 좋아하는 음식(이창호).
+      <li>초고추장</li>
+      <li>고추냉이</li>
+      <li>마늘</li>
+    </ul>
+    <div style="text-align: center">
+      년도: <input type="number" id="yyyy" value="2025" />
+      <!--  -->
+      월: <input type="number" id="mm" value="12" />
+    </div>
+    <div style="text-align: center">
+      <button id="prev">이전달(◀)</button>
+      <button id="now">오늘 달력</button>
+      <button id="next">다음달(▶)</button>
+    </div>
+
+    <div id="calendar" style="padding: 10px 100px"></div>
+
+    <script src="js/date.js"></script>
+  </body>
+</html>
