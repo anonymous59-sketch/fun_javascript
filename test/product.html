@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM 연습 - 상품조회</title>
+    <link rel="stylesheet" href="css/product.css" />
+  </head>
+
+  <body>
+    <h3>📦 DOM 연습 - 상품 조회 (박상원) </h3>
+    <!-- 조회조건 -->
+    <div class="search">
+      상품명: <input type="text" placeholder="상품명을 입력하세요" />
+      카테고리:
+      <select class="categories">
+        <option value="All">전체</option>
+      </select>
+      <button>조회</button>
+    </div>
+    <!-- 상품목록 -->
+    <div class="products">
+      <table>
+        <thead>
+          <tr>
+            <th>상품코드 (pcode)</th>
+            <th>상품명 (pname)</th>
+            <th>상품가격 (purchasePrice)</th>
+            <th>카테고리 (category)</th>
+          </tr>
+        </thead>
+        <tbody id="list"></tbody>
+      </table>
+    </div>
+    <!-- paging처리 -->
+    <div class="pagination"></div>
+    <!-- 외부 스크립트 -->
+    <script src="js/data.js"></script>
+    <script src="js/productPage.js"></script>
+  </body>
+</html>
