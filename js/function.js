@@ -74,7 +74,7 @@ console.log(changeColor(myCar));
 myCar['color'] = 'black';
 console.log(myCar);
 
-// 험슈, 배열, 객체 => 평균나이를 구하는 함수
+// 함수, 배열, 객체 => 평균나이를 구하는 함수
 function getAverageAge(persons = []) {
   if (!Array.isArray(persons) /* 배열인지 아닌지 확인하는 메서드 */ ) {
     return 0;
