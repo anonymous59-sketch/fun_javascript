@@ -12,7 +12,7 @@ let page = 1;
 // tr 만들기 함수
 // createElement를 안쓰고 만들기 실습
 function makeTr (member) {
-  let tr = `<tr><td>${member.id}</td><td>${member.first_name}</td><td>${member.last_name}</td><td>${member.salary}</td><td id = 'del'><button data-delNo = '${member.id}'>삭제</button></td></tr>` // 여기는 혼자서 실습
+  let tr = `<tr><td>${member.id}</td><td>${member.first_name}</td><td>${member.last_name}</td><td>${member.salary}</td><td id = 'del'><button data-delno = '${member.id}'>삭제</button></td></tr>` // 여기는 혼자서 실습
   return tr;
 }
 
@@ -88,12 +88,13 @@ document.querySelector('ul.pagination').addEventListener('click', e => {
   }
 });
 
-//// 삭제버튼 만들기 이것도 아직 미완성, 혼자서 해보기
-document.querySelectorAll('#del button').forEach(elem => {
-  elem.addEventListener('click', e => {
-    const filterAry = ary1.filter(elem => {
-      ary1.id != e.dataset.delNo
-    });
-    totalCnt = filterAry.length;
-  })
-});
+//// 삭제버튼 만들기 동적 렌더링이 발생하는 페이지는 이벤트 위임 기능을 사용하기
+target.addEventListener('click', e => {
+  // console.log(e.target.tagName);
+  if(e.target.tagName == 'BUTTON') {
+    // console.log(e.target.dataset.delno);
+    ary1 = ary1.filter(elem => elem.id != e.target.dataset.delno);
+    generatePagingList();
+    showPageList(page);
+  }
+})
