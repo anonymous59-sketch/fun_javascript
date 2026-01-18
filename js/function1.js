@@ -137,6 +137,6 @@ let result = getMemberInfo(jsonData1);
 
 let jsonStr = '{"name": "Hong"}';
 let obj = JSON.parse(jsonStr); // 문자열을 객체로,
-// console.log(jsonStr, obj); // 객체를 문자열로
-let jsonStr2 = JSON.stringify(obj);
+// console.log(jsonStr, obj); 
+let jsonStr2 = JSON.stringify(obj); // 객체를 문자열로
 // console.log(jsonStr2);

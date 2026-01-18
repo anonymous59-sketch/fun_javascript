@@ -88,7 +88,7 @@ document.querySelector('ul.pagination').addEventListener('click', e => {
   }
 });
 
-//// 삭제버튼 만들기 동적 렌더링이 발생하는 페이지는 이벤트 위임 기능을 사용하기
+//// 삭제버튼 만들기 동적 렌더링이 발생하는 페이지는 동적 렌더링이 되지 않는 요소에 이벤트 위임 기능을 사용하기
 target.addEventListener('click', e => {
   // console.log(e.target.tagName);
   if(e.target.tagName == 'BUTTON') {
