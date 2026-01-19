@@ -12,7 +12,7 @@ console.log(mapResult);
 // filter()
 const filterResult = numAry.filter(elem => elem > 90);
 console.log(filterResult);
-console.clear(); // 콘솔 클리어
+// console.clear(); // 콘솔 클리어
 // reduce() - 정의할 수 있는 종류가 다양하다.
 let result = numAry.reduce((acc, elem, idx, ary) => {
   console.log(acc, elem, ary);
@@ -50,7 +50,7 @@ result = Array.from(result); // nodeList => array
 console.log(result);
 result = result.filter(elem => elem.innerText < 50).map(elem => elem.innerText);
 console.log(result);
-console.clear();
+// console.clear();
 
 const digits = Array.of(1, 7, 2, 3, 4, 5);
 console.log(digits);

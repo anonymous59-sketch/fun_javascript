@@ -9,18 +9,19 @@ const obj = {
 // console.log(name, age); // 변수로 name을 사용하는것은 추천하지 않는다는 의미로 취소선이 생김
 
 // destructuring으로 선언
-let { name, age } = obj;
-// console.log(name, age);
+let { name: n1, age: a2 } = obj;
+console.log(n1, a2);
 
 // fetch 함수 = 비동기 함수
 // AJAX 함수(Asynchronous Javascript And Xml)
 // setTimeout(() => {}, 시간(ms)); 비동기함수가 queue에 들어가는 순서는 어떻게 되는지 확인해보기
+// 비동기 함수는 바로 queue로 들어가는게 아니라 queue도 여러 구역이 있다. 우선 queue 비슷한 공간에 비동기를 넣어두고 실행을 한다. 그리고 결과값이 나오면 queue로 넣고 queue에 들어온 순서대로 출력을 하게된다. 만약 동시에 완료되는 비동기 함수라면 위에서 아래로 순서대로 진행된다.
 fetch('js/data.json')
   .then(resp => resp.json())
   .then(({name, age}) => {
     // const res = JSON.parse(result);
     // console.log(result);
-    // console.log(`${name}, ${age}`, name, age);
+    console.log(`${name}, ${age}`, name, age);
   })
   .catch(err => {
     console.log(err);
@@ -30,5 +31,5 @@ fetch('js/data.json')
 const names = ['Hong', 'Hwang', 'Choi'];
 // const Name1 = names[0];
 const [name1, name2, name3, name4] = names;
-// console.log(name1, name2, name3, name4);
+console.log(name1, name2, name3, name4);
 

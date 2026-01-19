@@ -1,7 +1,7 @@
 // string2.js
 const str = `Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores iure eveniet nisi deserunt fugit! Illo, quasi. Commodi ad ut quas, suscipit excepturi minus, porro ullam sunt reiciendis tempora, dolores temporibus!`;
 const strAry = str.split(' '); // 구분자 기준으로 배열 만드는 매서드
-// console.log(strAry);
+console.log(strAry);
 
 // 문자열 생성
 const container = document.querySelector('div.container');
@@ -32,12 +32,13 @@ document.querySelector('button.btn-secondary').addEventListener('click', e => {
   // }
 });
 
-let seconds = 1;
+let seconds = 5;
 let job = setInterval(e => {
   // console.log('call');
   seconds--;
   if (seconds < 0) {
-    let aryNum = document.querySelectorAll('span');
+    let aryNum = Array.from(document.querySelectorAll('span'));
+    console.log(aryNum);
     if (aryNum.length == 0) {
       alert('성공');
     } else if (aryNum.length > 0) {

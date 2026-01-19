@@ -1,7 +1,7 @@
 //// string.js
 // indexOf() 특정 문자의 index 찾는 매서드 vs includes() true, false로 반환
 let pos = "Hello, World".indexOf('o'); // 문자열이 없으면 -1을 반환
-// console.log(pos);
+console.log(pos);
 
 const names = ['홍길동', '박인기', '박길동'];
 let cnt = 0;
@@ -29,7 +29,7 @@ names.forEach(name => {
 // console.log(`길동은 ${cnt}명 입니다2`);
 
 const newNames1 = names.filter(elem => elem.includes('길동'));
-// console.log(newNames1);
+console.log(newNames1);
 
 // slice()
 console.log("Hello, World".slice(-5, -3));
