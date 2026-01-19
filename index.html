@@ -10,6 +10,27 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
   </script>
+  <style>
+    div.container {
+      width: 530px;
+      height: 350px;
+      background-color: yellow;
+    }
+
+    div.container > span {
+      display: inline-block;
+      width: 110px;
+      margin: 5px;
+      padding: 2px;
+      background-color: aquamarine;
+    }
+
+    ul#list {
+      list-style: none;
+      color: blueviolet;
+      background-color: antiquewhite;
+    }
+  </style>
 </head>
 <body>
   <h3 class="title">자바스크립트2 박상원</h3>
@@ -17,7 +38,12 @@
     <!-- <li>사과</li>
     <li>배</li> -->
   </ul>
-  <script src="js/literal.js"></script>
+  입력: <input type="text" id="user_input">
+  <button class="btn btn-secondary">찾기</button>
+  <div class="container"></div>
+  <ul id="list">
+    <!-- <li>id, first_name, salary</li> -->
+  </ul>
+  <script src="js/array2.js"></script>
 </body>
-
 </html>
