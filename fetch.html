@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>박상원</title>
+</head>
+<body>
+  <h3>REST Api 박상원</h3>
+  <p>CRUD(생성, 조회, 수정, 삭제 => (Get, Post), (Put), (Delete))</p>
+  <p>Resource (url)</p>
+  <!-- REST방식이란 get, post, put, delete같은 요청방식과 resource인 url과의 조합으로 CRUD를 처리하는 방식 -->
+  <button onclick="addPost()">Post요청.</button>
+  <button onclick="modifyPost()">Put요청.</button>
+  <button onclick="removePost()">Delete요청</button>
+  <script>
+    // get 방식 fetch 함수에서 기본값이 get 방식
+    // fetch('http://localhost:3000/posts')
+    //   .then(resp => resp.json())
+    //   .then(data => {
+    //     console.log(data);
+    //   })
+    //   .catch(err => console.log(err));
+    
+    function addPost() {
+      //post 방식
+      fetch('http://localhost:3000/posts', {
+        method: 'post',
+        header: {'Content-Type': 'application/json'},
+        body: JSON.stringify({title: '새로운 글 등록', author: 'user01'}),
+      })
+        .then(resp => resp.json())
+        .then(data => console.log(data))
+        .catch(err => console.log(err));
+    } // 스크립트 상으로 존재하면 계속 실행이 되어서 데이터가 무한정 쌓이는 문제가 있다.
+
+    function modifyPost() {
+      // put 요청 방식
+      fetch('http://localhost:3000/posts/3', {
+        method: 'put',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({title: "3번글 변경", author: "user01"})
+      })
+        .then(resp => resp.json())
+        .then(data => console.log(data))
+        .catch(err => console.log(err));
+    }
+
+    function removePost() {
+      // delete 요청 방식
+      fetch('http://localhost:3000/posts/3', {
+        method: 'delete' // 삭제는 header와 body가 필요 없다
+      })
+        .then(resp => resp.json())
+        .then(data => console.log(data))
+        .catch(err => console.log(err));
+    }
+  </script>
+</body>
+</html>

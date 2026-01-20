@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>박상원</title>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load('current', {
+      'packages': ['corechart']
+    });
+    google.charts.setOnLoadCallback(drawChart);
+
+    async function makeDataAry() {
+      const dataAry = [];
+      dataAry.push(["User", "Purchasing Amount"]);
+      await fetch('http://192.168.0.16:3000/purchasing')
+        .then(res => res.json())
+        .then(result => {
+          // console.log(result);
+              result.forEach(elem => {
+              dataAry.push([elem.user, elem.amount]);
+            });
+          })
+        .catch(err => console.log(err));
+      // console.log(dataAry);
+      return dataAry;
+    }
+
+    async function drawChart() {
+      // let dataAry = await makeDataAry(); // 비동기 promise 규칙을 잘 확인해서 순서를 잘 정해줘야한다.
+      // console.log(dataAry);
+      var data = google.visualization.arrayToDataTable(await makeDataAry());
+      // console.log(data);
+      var options = {
+        title: '회원별 구매 금액'
+      };
+
+      var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+      chart.draw(data, options);
+    }
+  </script>
+</head>
+
+<body>
+  <div id="piechart" style="width: 900px; height: 500px;"></div>
+</body>
+
+</html>
