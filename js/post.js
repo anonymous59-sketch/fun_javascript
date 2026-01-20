@@ -2,20 +2,35 @@
 
 let maxId = 0;
 // 1. fetch를 활용해서 글 목록 출력하기
-fetch('http://192.168.0.16:3000/posts')
+fetch('http://localhost:3000/posts')
   .then(res => res.json())
   .then(result => {
     // console.log(result);
     const tbody = document.querySelector('#postList');
     result.forEach(elem => {
-      const tr = `<tr ondblclick="DblClick(event)" data-id="${elem['id']}" data-title="${elem['title']}" data-author="${elem['author']}"><td>${elem['id']}</td><td>${elem['title']}</td><td>${elem['author']}</td><td><button class="btn btn-danger" data-delno=${elem['id']}>삭제</button></td></tr>`;
+      const tr = `<tr class="collapsed" data-bs-toggle="collapse" data-bs-target="#collapse${elem['id']}" aria-expanded="false" aria-controls="collapse${elem['id']}" ondblclick="DblClick(event)" data-id="${elem['id']}" data-title="${elem['title']}" data-author="${elem['author']}"><td>${elem['id']}</td><td>${elem['title']}</td><td>${elem['author']}</td><td><button class="btn btn-danger" data-delno=${elem['id']}>삭제</button></td></tr>`;
       tbody.insertAdjacentHTML('beforeend', tr);
+      
+      fetch(`http://localhost:3000/comments?postId=${elem.id}`)
+        .then(res => res.json())
+        .then(result => {
+          // console.log(result);
+          result.forEach(elem => {
+            const tr = `<tr id="collapse${elem['postId']}" class="accordion-collapse collapse" data-bs-parent="#postList"><td>${elem['id']}</td><td colspan="3">${elem['body']}</td></tr>`;
+            document.querySelector(`tr[data-id="${elem.postId}"]`).insertAdjacentHTML('afterend', tr);
+              })
+            })
+        .catch(err => console.log(err));
     });
+
     maxId = result.reduce((acc, elem) => {
       return acc > Number(elem.id) ? acc : Number(elem.id);
     }, maxId)
   })
   .catch(err => console.log(err));
+
+
+
 
 // 삭제 버튼을 눌렀을 때 이벤트
 document.querySelector('#postList').addEventListener('click', e => {
@@ -23,7 +38,7 @@ document.querySelector('#postList').addEventListener('click', e => {
   if(e.target.tagName == 'BUTTON') {
     // console.log(e.target.dataset.delno);
     const delNo = e.target.dataset.delno;
-    fetch(`http://192.168.0.16:3000/posts/${delNo}`, {
+    fetch(`http://localhost:3000/posts/${delNo}`, {
       method: 'delete'
     })
       .then(res => res.json())
@@ -40,7 +55,7 @@ document.querySelector('form[name="addForm"]').addEventListener('submit', e => {
   e.preventDefault();
   const title = document.querySelector('#title').value;
   const author = document.querySelector('#author').value;
-  fetch('http://192.168.0.16:3000/posts/', {
+  fetch('http://localhost:3000/posts/', {
         method: 'post',
         header: {'Content-Type': 'application/json'},
         body: JSON.stringify({id: "" + (maxId + 1), title, author}),
@@ -66,7 +81,7 @@ function closeModal() {
   const id = document.querySelector("#modalNo").textContent;
   const title = document.querySelector("#modalTitle").value;
   const author = document.querySelector("#modalAuthor").value;
-  fetch(`http://192.168.0.16:3000/posts/${id}`, {
+  fetch(`http://localhost:3000/posts/${id}`, {
         method: 'put',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({title, author})
@@ -82,7 +97,7 @@ function closeModal() {
 // const target = document.querySelector("#postList");
 // let max_id = 0; // 신규글번호
 
-// fetch("http://192.168.0.16:3000/posts")
+// fetch("http://localhost:3000/posts")
 //   .then((resp) => resp.json())
 //   .then((data) => {
 //     // 데이터 건수만큼 tr 생성해주기.
@@ -105,7 +120,7 @@ function closeModal() {
 //     const title = document.querySelector("#title").value;
 //     const author = document.querySelector("#author").value;
 //     // fetch. Post요청처리.
-//     fetch("http://192.168.0.16:3000/posts", {
+//     fetch("http://localhost:3000/posts", {
 //       method: "post",
 //       headers: { "Content-Type": "application/json" },
 //       body: JSON.stringify({ id: "" + (Number(max_id) + 1), title, author }),
@@ -143,7 +158,7 @@ function closeModal() {
 //     const no = this.dataset.no; // data-no의 속성값.
 
 //     // fetch(삭제는 delete요청) 호출 start.
-//     fetch("http://192.168.0.16:3000/posts/" + no, {
+//     fetch("http://localhost:3000/posts/" + no, {
 //       method: "delete",
 //     })
 //       .then((resp) => resp.json())
@@ -167,7 +182,7 @@ function closeModal() {
 //   const id = document.querySelector("#modalNo").textContent;
 //   const title = document.querySelector("#modalTitle").value;
 //   const author = document.querySelector("#modalAuthor").value;
-//   fetch(`http://192.168.0.16:3000/posts/${id}`, {
+//   fetch(`http://localhost:3000/posts/${id}`, {
 //         method: 'put',
 //         headers: {'Content-Type': 'application/json'},
 //         body: JSON.stringify({title, author})
