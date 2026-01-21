@@ -1,16 +1,16 @@
 // obj.js
 class Student { /* 객체를 정의 */
   constructor(studNo, studName, studBirth /* 객체의 속성 정의 */){
-    this.sno = studNo;
+    this.sno/* 속성 이름 */ = studNo /* 값(매개변수로 받는 값이 들어감) */;
     this.sname = studName;
     this.birth = studBirth;
-  } // 생성자 함수 (속성 정의)
+  } // 생성자 함수 constructor (속성 정의)
   showInfo() {
     console.log(`학번 ${this.sno}`);
   } // 매서드 정의
   showBirth() {
     console.log(`${this.sname}의 생일은 ${this.birth}`);
-  }
+  } // 매서드 정의는 constructor 함수 밖에서 정의
 }
 
 const hong = new Student('11-1', '홍길동', '2005-03-04'); // 인스턴스 생성
@@ -42,7 +42,7 @@ console.log(hong, hong2); // 클래스에 직접 추가했기때문에 기능이
 // prototype 활용
 const now = new Date();
 console.log(now.toTimeString()); // 2026-05-02 13:22:34 포맷으로 출력하려면 따로 정의해서 사용해야됨
-console.clear();
+// console.clear();
 Date.prototype.toLocalFormat = function() {
   // console.log(this);
   const year = this.getFullYear();
