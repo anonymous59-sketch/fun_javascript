@@ -8,7 +8,7 @@ fetch('http://localhost:3000/posts')
     // console.log(result);
     const tbody = document.querySelector('#postList');
     result.forEach(elem => {
-      const tr = `<tr class="collapsed" data-bs-toggle="collapse" data-bs-target="#collapse${elem['id']}" aria-expanded="false" aria-controls="collapse${elem['id']}" ondblclick="DblClick(event)" data-id="${elem['id']}" data-title="${elem['title']}" data-author="${elem['author']}"><td>${elem['id']}</td><td>${elem['title']}</td><td>${elem['author']}</td><td><button class="btn btn-danger" data-delno=${elem['id']}>삭제</button></td></tr>`;
+      const tr = `<tr class="accordion-header" data-bs-toggle="collapse" data-bs-target="#collapse${elem['id']}" aria-expanded="false" aria-controls="collapse${elem['id']}" ondblclick="DblClick(event)" data-id="${elem['id']}" data-title="${elem['title']}" data-author="${elem['author']}"><td>${elem['id']}</td><td>${elem['title']}</td><td>${elem['author']}</td><td><button class="btn btn-danger" data-delno=${elem['id']}>삭제</button></td></tr>`;
       tbody.insertAdjacentHTML('beforeend', tr);
       
       fetch(`http://localhost:3000/comments?postId=${elem.id}`)
