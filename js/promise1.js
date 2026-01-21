@@ -19,7 +19,7 @@ p1.then(data => {
 const f1 = fetch('js/data.json')
 
 f1.then(data => {
-  console.log(data.json());
+  console.log(data);
   return data.json();
   })
   .then(data => {
