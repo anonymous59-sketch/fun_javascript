@@ -76,6 +76,7 @@ function generatePagingList() {
 //////////////////////////////////////////// 내용 변화 끝 /////////////////////////////////////////////////////
 }
 generatePagingList();
+
 //// 이벤트
 document.querySelector('ul.pagination').addEventListener('click', e => {
   // console.dir(e.target.tagName == 'A'); // console.dir로 요소의 정보를 확인 할 수 있음, 요소 상세보기에서 tagName이 태그 종류임을 알 수 있음
