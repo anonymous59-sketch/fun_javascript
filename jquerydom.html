@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jqeury</title>
+    <script
+      src="https://code.jquery.com/jquery-4.0.0.js"
+      integrity="sha256-9fsHeVnKBvqh3FB2HYu7g2xseAZ5MlN6Kz/qnkASV8U="
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      .active {
+        font-weight: bold;
+        color: rgb();
+      }
+    </style>
+  </head>
+  <body>
+    <div id="fruit">
+      <div class="item" data-id="10" data-price="2000">사과</div>
+      <div class="item" data-id="20" data-price="4000">바나나</div>
+      <div class="item" data-id="30" data-price="6000">딸기</div>
+
+    </div>
+
+    <script>
+      // $("div").click((e) => $(e.target).addClass("active"));
+      // $("div").on("click", (e) => {$(e.target).addClass("active")});
+
+      // $(".item").on("click", e => {$(e.target).addClass("active")});
+
+      $("#fruit").on("click", ".item", e => $(e.target).addClass("active"));
+    </script>
+  </body>
+</html>

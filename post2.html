@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>post2</title>
+    <script
+      src="https://code.jquery.com/jquery-4.0.0.js"
+      integrity="sha256-9fsHeVnKBvqh3FB2HYu7g2xseAZ5MlN6Kz/qnkASV8U="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div id="result"></div>
+
+    <script>
+      init();
+
+      function init() {
+        $.ajax("https://jsonplaceholder.typicode.com/todos/1").then((resp) => {
+          console.log(resp);
+          let { userId, id, title, completed } = resp;
+
+          $("#result")
+            .append("<div>")
+            // .html(JSON.stringify(resp));
+            .html(`${userId}, ${id}, ${title}, ${completed}`);
+        });
+      }
+
+      // function init() {
+      //   $.ajax("https://jsonplaceholder.typicode.com/todos")
+      //    .then((responses) => {
+      //     console.log(responses);
+      //     let { userId, id, title, completed } = resp;
+
+      //     $("#result")
+      //       .append("<div>")
+      //       .html(`${userId}, ${id}, ${title}, ${completed}`);
+      //   });
+      // }
+    </script>
+  </body>
+</html>
